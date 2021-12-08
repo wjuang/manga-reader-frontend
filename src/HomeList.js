@@ -12,13 +12,21 @@ class HomeList extends Component {
   render(){
     return(
       <div>
-      {
-        this.props.manga.map(manga => {
-          return(
-            <p>{manga.title}</p>
-          )
-        })
-      }
+      <table>
+        <tbody>
+          {
+            this.props.manga.map(manga => {
+              return(
+                <tr key={manga.id}>
+                  <td>
+                  {manga.title}
+                  </td>
+                </tr>
+              )
+            })
+          }
+        </tbody>
+      </table>
       </div>
     )
   }
