@@ -17,7 +17,7 @@ class HomeList extends Component {
           {
             this.props.manga.map(manga => {
               return(
-                <tr key={manga.id}>
+                <tr onClick={() => this.props.showToggle(manga)} key={manga.id}>
                   <td>
                   {manga.title}
                   </td>

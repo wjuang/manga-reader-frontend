@@ -2,6 +2,7 @@ import './App.css';
 import React, {Component} from 'react'
 import HomeList from './HomeList'
 import NewSeries from './NewSeries'
+import ShowSeries from './ShowSeries'
 
 let baseURL = 'http://localhost:8000'
 
@@ -10,7 +11,9 @@ class App extends Component {
     super(props)
 
     this.state = {
-      allManga: []
+      allManga: [],
+      showManga: [],
+      showPage: false
     }
   }
 
@@ -38,6 +41,13 @@ class App extends Component {
     })
   }
 
+  showToggle = (manga) => {
+    this.setState({
+      showPage: !this.state.showPage,
+      showManga: manga
+    })
+  }
+
   componentDidMount(){
     this.getManga()
   }
@@ -45,8 +55,11 @@ class App extends Component {
   render(){
     return(
       <div>
-      <HomeList manga={this.state.allManga} />
-      <NewSeries baseURL={baseURL} addSeries={this.addSeries} />
+        {
+          (this.state.showPage) ? <ShowSeries manga={this.state.showManga} /> : ''
+        }
+        <HomeList manga={this.state.allManga} showToggle={this.showToggle}/>
+        <NewSeries baseURL={baseURL} addSeries={this.addSeries} />
       </div>
     )
   }
