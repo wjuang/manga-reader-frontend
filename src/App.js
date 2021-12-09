@@ -1,6 +1,7 @@
 import './App.css';
 import React, {Component} from 'react'
 import HomeList from './HomeList'
+import NewSeries from './NewSeries'
 
 let baseURL = 'http://localhost:8000'
 
@@ -29,6 +30,14 @@ class App extends Component {
     })
   }
 
+  addSeries = (series) => {
+    const copyAllManga = [...this.state.allManga]
+    copyAllManga.push(series.data)
+    this.setState({
+      allManga: copyAllManga,
+    })
+  }
+
   componentDidMount(){
     this.getManga()
   }
@@ -37,6 +46,7 @@ class App extends Component {
     return(
       <div>
       <HomeList manga={this.state.allManga} />
+      <NewSeries baseURL={baseURL} addSeries={this.addSeries} />
       </div>
     )
   }

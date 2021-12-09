@@ -5,14 +5,14 @@ class HomeList extends Component {
     super(props)
 
     this.state ={
-      manga: []
+      manga: this.props.manga
     }
   }
 
   render(){
     return(
       <div>
-      <table>
+      <table key={this.props.allManga}>
         <tbody>
           {
             this.props.manga.map(manga => {
