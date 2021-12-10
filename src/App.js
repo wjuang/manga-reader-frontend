@@ -48,6 +48,22 @@ class App extends Component {
     })
   }
 
+  deleteSeries = (id) => {
+    fetch(baseURL + '/reader/' + id, {
+      method: 'DELETE'
+    }).then( res=> {
+      // console.log(res)
+      const findIndex = this.state.allManga.findIndex(manga => manga.id === id)
+      const copyAllManga = [...this.state.allManga]
+      copyAllManga.splice(findIndex, 1)
+      this.setState({
+        allManga: copyAllManga,
+        showPage: false,
+        showManga: []
+      })
+    })
+  }
+
   componentDidMount(){
     this.getManga()
   }
@@ -56,7 +72,7 @@ class App extends Component {
     return(
       <div>
         {
-          (this.state.showPage) ? <ShowSeries manga={this.state.showManga} /> : ''
+          (this.state.showPage) ? <ShowSeries manga={this.state.showManga} deleteSeries={this.deleteSeries} /> : ''
         }
         <HomeList manga={this.state.allManga} showToggle={this.showToggle}/>
         <NewSeries baseURL={baseURL} addSeries={this.addSeries} />
