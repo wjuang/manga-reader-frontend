@@ -5,7 +5,7 @@ class ShowSeries extends Component {
     super(props)
 
     this.state = {
-
+      manga: this.props.manga
     }
   }
 
@@ -16,6 +16,19 @@ class ShowSeries extends Component {
         <h5>{this.props.manga.author}</h5>
         <h5>{this.props.manga.artist}</h5>
         <button onClick={() => this.props.deleteSeries(this.props.manga.id)}>Delete</button>
+        {
+          this.props.showChapters.map(chapter => {
+            return(
+              <>
+                <tr key={chapter.id}>
+                  <td>
+                    {chapter.number}
+                  </td>
+                </tr>
+              </>
+            )
+          })
+        }
       </div>
     )
   }

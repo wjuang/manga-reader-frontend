@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       allManga: [],
       showManga: [],
-      showPage: false
+      showPage: false,
+      showChapters: []
     }
   }
 
@@ -42,6 +43,7 @@ class App extends Component {
   }
 
   showToggle = (manga) => {
+    this.getChapters(manga.id)
     this.setState({
       showPage: !this.state.showPage,
       showManga: manga
@@ -64,6 +66,22 @@ class App extends Component {
     })
   }
 
+  getChapters = (seriesId) => {
+    fetch(baseURL + '/reader/' + seriesId + '/chapters')
+    .then (res => {
+      if (res.status === 200){
+        return res.json()
+      } else {
+        return []
+      }
+    })
+    .then (data => {
+      this.setState({
+        showChapters: data.data
+      })
+    })
+  }
+
   componentDidMount(){
     this.getManga()
   }
@@ -72,7 +90,7 @@ class App extends Component {
     return(
       <div>
         {
-          (this.state.showPage) ? <ShowSeries manga={this.state.showManga} deleteSeries={this.deleteSeries} /> : ''
+          (this.state.showPage) ? <ShowSeries manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} /> : ''
         }
         <HomeList manga={this.state.allManga} showToggle={this.showToggle}/>
         <NewSeries baseURL={baseURL} addSeries={this.addSeries} />
