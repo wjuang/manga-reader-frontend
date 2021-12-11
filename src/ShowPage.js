@@ -5,16 +5,26 @@ class ShowPage extends Component {
     super(props)
 
     this.state ={
-      manga: this.props.manga
+      pages: this.props.pages
     }
   }
 
   render(){
     return(
       <div>
-        
+        {
+          this.props.pages.map(page => {
+            return(
+              <>
+                <img src={page.link} />
+              </>
+            )
+          })
+        }
       </div>
     )
   }
 
 }
+
+export default ShowPage

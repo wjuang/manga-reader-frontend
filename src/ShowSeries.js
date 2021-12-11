@@ -20,11 +20,13 @@ class ShowSeries extends Component {
           this.props.showChapters.map(chapter => {
             return(
               <>
-                <tr key={chapter.id}>
-                  <td>
-                    {chapter.number}
-                  </td>
-                </tr>
+                <table>
+                  <tr key={chapter.id}>
+                    <td onClick={() => this.props.getPages(this.props.manga.id, chapter.number)}>
+                      {chapter.number}
+                    </td>
+                  </tr>
+                </table>
               </>
             )
           })
