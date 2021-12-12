@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Image, Transformation, CloudinaryContext} from 'cloudinary-react'
+// import {Image, Transformation, CloudinaryContext} from 'cloudinary-react'
 import CloudinaryUploadWidget from './UploadWidget'
 
 class PageUploader extends Component {
