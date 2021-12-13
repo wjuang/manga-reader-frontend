@@ -19,7 +19,8 @@ class App extends Component {
       showChapters: [],
       showPages: [],
       readPage: false,
-      homePage: true
+      homePage: true,
+      submitting: false
     }
   }
 
@@ -113,7 +114,8 @@ class App extends Component {
     this.setState({
       homePage: true,
       showPage: false,
-      readPage: false
+      readPage: false,
+      submitting: false
     })
   }
 
@@ -139,6 +141,15 @@ class App extends Component {
     })
   }
 
+  submitToggle = () => {
+    this.setState({
+      showPage: false,
+      homePage: false,
+      readPage: false,
+      submitting: true
+    })
+  }
+
   componentDidMount(){
     this.getManga()
   }
@@ -147,6 +158,7 @@ class App extends Component {
     return(
       <div>
         <button onClick={() => this.goHome()}>Home</button>
+        <button onClick={() => this.submitToggle()}>Add New Series</button>
         {
           (this.state.showPage) ? <ShowSeries baseURL={baseURL} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} deleteChapter={this.deleteChapter} /> : ''
         }
@@ -156,7 +168,9 @@ class App extends Component {
         {
         (this.state.homePage) ? <HomeList manga={this.state.allManga} showToggle={this.showToggle}/> : ''
         }
-        <NewSeries baseURL={baseURL} addSeries={this.addSeries} />
+        {
+        (this.state.submitting) ? <NewSeries baseURL={baseURL} addSeries={this.addSeries} /> : ''
+        }
       </div>
     )
   }
