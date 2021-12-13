@@ -135,7 +135,6 @@ class App extends Component {
     return(
       <div>
         <button onClick={() => this.goHome()}>Home</button>
-        <PageUploader />
         {
           (this.state.showPage) ? <ShowSeries baseURL={baseURL} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} /> : ''
         }

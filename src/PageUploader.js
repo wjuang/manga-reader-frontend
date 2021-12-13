@@ -14,7 +14,7 @@ class PageUploader extends Component {
   render(){
     return(
       <>
-        <CloudinaryUploadWidget />
+        <CloudinaryUploadWidget chapter={this.props.chapter} pagenumberIncrease={this.props.pagenumberIncrease} addPage={this.props.addPage}/>
       </>
     )
   }

@@ -10,7 +10,10 @@ class CloudinaryUploadWidget extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log("Done! Here is the image info: ", result.info);
+          console.log("Done! Here is the image info: ", result.info)
+          this.props.chapter.link = result.info.url
+          this.props.pagenumberIncrease()
+          this.props.addPage(this.props.chapter, result.info)
         }
       }
     );

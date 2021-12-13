@@ -22,11 +22,13 @@ class ShowSeries extends Component {
             return(
               <>
                 <table>
-                  <tr key={chapter.id}>
-                    <td onClick={() => this.props.getPages(this.props.manga.id, chapter.number)}>
-                      {chapter.number}
-                    </td>
-                  </tr>
+                  <tbody>
+                    <tr key={chapter.id}>
+                      <td onClick={() => this.props.getPages(this.props.manga.id, chapter.number)}>
+                        {chapter.number}
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
               </>
             )
