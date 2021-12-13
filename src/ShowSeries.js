@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import UploadChapter from './UploadChapter'
 
 class ShowSeries extends Component {
   constructor(props){
@@ -31,6 +32,7 @@ class ShowSeries extends Component {
             )
           })
         }
+        <UploadChapter manga={this.props.manga} addChapter={this.props.addChapter} baseURL={this.props.baseURL} />
       </div>
     )
   }

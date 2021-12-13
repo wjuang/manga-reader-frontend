@@ -42,6 +42,8 @@ class NewSeries extends Component {
 
   render(){
     return(
+      <>
+      <p>Add New Manga:</p>
       <form onSubmit={this.handleSubmit}>
         <input type='text' id='title' name='title' placeholder='Title' onChange={(e) => this.handleChange(e)} value={this.state.title} />
         <input type='text' id='author' name='author' placeholder='Author' onChange={(e) => this.handleChange(e)} value={this.state.author} />
@@ -49,6 +51,7 @@ class NewSeries extends Component {
         <input type='text' id='cover' name='cover' placeholder='Link to Cover Image' onChange={(e) => this.handleChange(e)} value={this.state.cover} />
         <input type='submit' value='Submit' />
       </form>
+      </>
     )
   }
 }

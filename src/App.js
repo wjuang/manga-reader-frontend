@@ -69,7 +69,7 @@ class App extends Component {
         allManga: copyAllManga,
         showPage: false,
         showManga: [],
-        homePage: false
+        homePage: true
       })
     })
   }
@@ -118,6 +118,14 @@ class App extends Component {
     })
   }
 
+  addChapter = (chapter) => {
+    const copyChapters = [...this.state.showChapters]
+    copyChapters.push(chapter.data)
+    this.setState({
+      showChapters: copyChapters,
+    })
+  }
+
 
   componentDidMount(){
     this.getManga()
@@ -129,7 +137,7 @@ class App extends Component {
         <button onClick={() => this.goHome()}>Home</button>
         <PageUploader />
         {
-          (this.state.showPage) ? <ShowSeries manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} /> : ''
+          (this.state.showPage) ? <ShowSeries baseURL={baseURL} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} /> : ''
         }
         {
           (this.state.readPage) ? <ShowPage pages={this.state.showPages} /> : ''
