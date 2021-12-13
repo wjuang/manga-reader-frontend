@@ -126,6 +126,19 @@ class App extends Component {
     })
   }
 
+  deleteChapter = (chapter) => {
+    fetch(baseURL + '/reader/' + chapter.seriesid + '/' + chapter.number, {
+      method: 'DELETE'
+    }).then( res=> {
+      // console.log(res)
+      const findIndex = this.state.showChapters.findIndex(chap => chap.number === chapter.number)
+      const copyChapters = [...this.state.showChapters]
+      copyChapters.splice(findIndex, 1)
+      this.setState({
+        showChapters: copyChapters
+      })
+    })
+  }
 
   componentDidMount(){
     this.getManga()
@@ -136,7 +149,7 @@ class App extends Component {
       <div>
         <button onClick={() => this.goHome()}>Home</button>
         {
-          (this.state.showPage) ? <ShowSeries baseURL={baseURL} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} /> : ''
+          (this.state.showPage) ? <ShowSeries baseURL={baseURL} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} deleteChapter={this.deleteChapter} /> : ''
         }
         {
           (this.state.readPage) ? <ShowPage pages={this.state.showPages} /> : ''

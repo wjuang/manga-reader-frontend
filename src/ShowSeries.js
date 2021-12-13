@@ -27,6 +27,7 @@ class ShowSeries extends Component {
                       <td onClick={() => this.props.getPages(this.props.manga.id, chapter.number)}>
                         {chapter.number}
                       </td>
+                      <td onClick={() => this.props.deleteChapter(chapter)}><small>delete</small></td>
                     </tr>
                   </tbody>
                 </table>
