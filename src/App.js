@@ -18,7 +18,8 @@ class App extends Component {
       showPage: false,
       showChapters: [],
       showPages: [],
-      readPage: false
+      readPage: false,
+      homePage: true
     }
   }
 
@@ -51,7 +52,8 @@ class App extends Component {
     this.setState({
       showPage: !this.state.showPage,
       showManga: manga,
-      readPage: false
+      readPage: false,
+      homePage: false
     })
   }
 
@@ -66,7 +68,8 @@ class App extends Component {
       this.setState({
         allManga: copyAllManga,
         showPage: false,
-        showManga: []
+        showManga: [],
+        homePage: false
       })
     })
   }
@@ -100,10 +103,19 @@ class App extends Component {
     .then (data => {
       this.setState({
         showPages: data.data,
-        readPage: true
+        readPage: true,
+        showPage: false
       })
     })
 
+  }
+
+  goHome = () => {
+    this.setState({
+      homePage: true,
+      showPage: false,
+      readPage: false
+    })
   }
 
 
@@ -114,6 +126,7 @@ class App extends Component {
   render(){
     return(
       <div>
+        <button onClick={() => this.goHome()}>Home</button>
         <PageUploader />
         {
           (this.state.showPage) ? <ShowSeries manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} /> : ''
@@ -121,7 +134,9 @@ class App extends Component {
         {
           (this.state.readPage) ? <ShowPage pages={this.state.showPages} /> : ''
         }
-        <HomeList manga={this.state.allManga} showToggle={this.showToggle}/>
+        {
+        (this.state.homePage) ? <HomeList manga={this.state.allManga} showToggle={this.showToggle}/> : ''
+        }
         <NewSeries baseURL={baseURL} addSeries={this.addSeries} />
       </div>
     )

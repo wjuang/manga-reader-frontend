@@ -19,7 +19,7 @@ class HomeList extends Component {
               return(
                 <>
                   <tr onClick={() => this.props.showToggle(manga)} key={manga.id}>
-                    <td>
+                    <td key={manga.id}>
                     {manga.title}
                     </td>
                   </tr>
