@@ -107,7 +107,6 @@ class App extends Component {
         showPage: false
       })
     })
-
   }
 
   goHome = () => {
@@ -152,7 +151,7 @@ class App extends Component {
           (this.state.showPage) ? <ShowSeries baseURL={baseURL} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} deleteChapter={this.deleteChapter} /> : ''
         }
         {
-          (this.state.readPage) ? <ShowPage pages={this.state.showPages} /> : ''
+          (this.state.readPage) ? <ShowPage pages={this.state.showPages} getPages={this.getPages} manga={this.state.showManga} chapters={this.state.showChapters} showToggle={this.showToggle}/> : ''
         }
         {
         (this.state.homePage) ? <HomeList manga={this.state.allManga} showToggle={this.showToggle}/> : ''

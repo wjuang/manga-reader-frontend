@@ -12,6 +12,9 @@ class ShowPage extends Component {
   render(){
     return(
       <div>
+        <p onClick={() => this.props.getPages(this.props.manga.id, this.props.pages[0].chapternumber-1)}>Previous</p>
+        <p onClick={() => this.props.showToggle(this.props.manga)}>Chapter List</p>
+        <p onClick={() => this.props.getPages(this.props.manga.id, this.props.pages[0].chapternumber+1)}>Next</p>
         {
           this.props.pages.map(page => {
             return(
