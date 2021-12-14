@@ -1,12 +1,16 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { login, logout, useAuth} from "./Firebase.js"
 
-export default function LoginPage() {
+export default function LoginPage({changeUser}) {
   const [ loading, setLoading ] = useState(false);
   const currentUser = useAuth();
 
   const emailRef = useRef();
   const passwordRef = useRef();
+
+  useEffect(() =>
+    changeUser(currentUser?.email), [currentUser]
+  )
 
 
   async function handleLogin() {
@@ -16,8 +20,8 @@ export default function LoginPage() {
     } catch {
       alert("incorrect password or username");
     }
-    setLoading(false);
-  }
+    setLoading(false)
+    }
 
   async function handleLogout() {
     setLoading(true);

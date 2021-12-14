@@ -7,6 +7,7 @@ import ShowPage from './ShowPage'
 import PageUploader from './PageUploader'
 import LoginPage from './Login'
 import SignUpPage from './Signup'
+import {useAuth} from './Firebase'
 
 let baseURL = 'http://localhost:8000'
 
@@ -22,7 +23,7 @@ class App extends Component {
       showPages: [],
       readPage: false,
       homePage: true,
-      submitting: false
+      submitting: false,
     }
   }
 
@@ -152,6 +153,12 @@ class App extends Component {
     })
   }
 
+  changeUser = (user) => {
+    this.setState({
+      currentUser: user
+    })
+  }
+
   componentDidMount(){
     this.getManga()
   }
@@ -161,8 +168,9 @@ class App extends Component {
       <div>
         <button onClick={() => this.goHome()}>Home</button>
         <button onClick={() => this.submitToggle()}>Add New Series</button>
-        <SignUpPage />
-        <LoginPage />
+        <p>here:{this.state.currentUser}</p>
+        <SignUpPage changeUser={this.changeUser}/>
+        <LoginPage changeUser={this.changeUser}/>
         {
           (this.state.showPage) ? <ShowSeries baseURL={baseURL} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} deleteChapter={this.deleteChapter} /> : ''
         }

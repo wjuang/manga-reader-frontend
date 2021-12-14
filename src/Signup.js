@@ -1,12 +1,16 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { signup, useAuth} from "./Firebase"
 
-export default function SignupPage() {
+export default function SignupPage({changeUser}) {
   const [ loading, setLoading ] = useState(false);
   const currentUser = useAuth();
 
   const emailRef = useRef();
   const passwordRef = useRef();
+
+  useEffect(() =>
+    changeUser(currentUser?.email), [currentUser]
+  )
 
   async function handleSignup() {
     setLoading(true);
