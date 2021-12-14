@@ -1,5 +1,4 @@
 import './App.css';
-import 'semantic-ui-css/semantic.min.css'
 import React, {Component} from 'react'
 import HomeList from './HomeList'
 import NewSeries from './NewSeries'
@@ -10,7 +9,6 @@ import LoginPage from './Login'
 import SignUpPage from './Signup'
 import Logout from './Logout'
 import {useAuth} from './Firebase'
-import {Menu} from 'semantic-ui-react'
 
 let baseURL = 'http://localhost:8000'
 
@@ -190,23 +188,22 @@ class App extends Component {
   render(){
     return(
       <div>
-        <Menu inverted vertical>
-          <Menu.Item
-          name='Home'
-          onClick={() => this.goHome()}
-          />
-          <Menu.Item
-          name='Add New Series'
-          onClick={() => this.submitToggle()}
-          />
-          <Menu.Item
-          name='Log In or Register'
-          onClick={() => this.loginToggle()}
-          />
-          <Menu.Item
-          name='About'
-          />
-        </Menu>
+        <table>
+        <tbody>
+          <tr onClick={() => this.goHome()}>
+          <td>Home</td>
+          </tr>
+          <tr onClick={() => this.submitToggle()}>
+          <td>Add New Series</td>
+          </tr>
+          <tr onClick={() => this.loginToggle()}>
+          <td>Log In or Register</td>
+          </tr>
+          <tr>
+          <td>About</td>
+          </tr>
+          </tbody>
+        </table>
         {
           (this.state.currentUser) ?
           <>
