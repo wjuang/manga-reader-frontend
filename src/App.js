@@ -5,6 +5,8 @@ import NewSeries from './NewSeries'
 import ShowSeries from './ShowSeries'
 import ShowPage from './ShowPage'
 import PageUploader from './PageUploader'
+import LoginPage from './Login'
+import SignUpPage from './Signup'
 
 let baseURL = 'http://localhost:8000'
 
@@ -159,6 +161,8 @@ class App extends Component {
       <div>
         <button onClick={() => this.goHome()}>Home</button>
         <button onClick={() => this.submitToggle()}>Add New Series</button>
+        <SignUpPage />
+        <LoginPage />
         {
           (this.state.showPage) ? <ShowSeries baseURL={baseURL} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} deleteChapter={this.deleteChapter} /> : ''
         }
