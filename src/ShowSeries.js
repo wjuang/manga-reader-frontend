@@ -16,7 +16,9 @@ class ShowSeries extends Component {
         <h1>{this.props.manga.title}</h1>
         <h5>{this.props.manga.author}</h5>
         <h5>{this.props.manga.artist}</h5>
-        <button onClick={() => this.props.deleteSeries(this.props.manga.id)}>Delete</button>
+        {
+        (this.props.currentUser === this.props.manga.submittedBy) ? <button onClick={() => this.props.deleteSeries(this.props.manga.id)}>Delete</button> : ''
+        }
         {
           this.props.showChapters.map(chapter => {
             return(
@@ -27,7 +29,9 @@ class ShowSeries extends Component {
                       <td onClick={() => this.props.getPages(this.props.manga.id, chapter.number)}>
                         {chapter.number}
                       </td>
-                      <td onClick={() => this.props.deleteChapter(chapter)}><small>delete</small></td>
+                      {
+                      (this.props.currentUser === chapter.submittedBy) ? <td onClick={() => this.props.deleteChapter(chapter)}><small>delete</small></td> : ''
+                      }
                     </tr>
                   </tbody>
                 </table>
@@ -35,7 +39,7 @@ class ShowSeries extends Component {
             )
           })
         }
-        <UploadChapter manga={this.props.manga} addChapter={this.props.addChapter} baseURL={this.props.baseURL} />
+        <UploadChapter currentUser={this.props.currentUser} manga={this.props.manga} addChapter={this.props.addChapter} baseURL={this.props.baseURL} />
       </div>
     )
   }

@@ -20,9 +20,10 @@ class NewSeries extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    console.log(this.props.currentUser)
     fetch(this.props.baseURL + '/reader/', {
       method: 'POST',
-      body: JSON.stringify({title: this.state.title, author: this.state.author, artist: this.state.artist, cover: this.state.cover}),
+      body: JSON.stringify({title: this.state.title, author: this.state.author, artist: this.state.artist, cover: this.state.cover, submittedBy: this.props.currentUser}),
       headers: { 'Content-type' : 'application/json'}
     })
     .then(res => {

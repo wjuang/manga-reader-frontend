@@ -23,7 +23,7 @@ class UploadChapter extends Component {
     event.preventDefault()
     fetch(this.props.baseURL + '/reader/' + this.props.manga.id, {
       method: 'POST',
-      body: JSON.stringify({number: this.state.number, pagenumber: 0}),
+      body: JSON.stringify({number: this.state.number, pagenumber: 0, submittedBy: this.props.currentUser}),
       headers: { 'Content-type' : 'application/json'}
     })
     .then(res => {
@@ -58,7 +58,7 @@ class UploadChapter extends Component {
     // event.preventDefault()
     fetch(this.props.baseURL + '/reader/' + this.props.manga.id + '/' + chapter.number, {
       method: 'POST',
-      body: JSON.stringify({chapternumber: chapter.number, number: chapter.pagenumber+1, link: page.url}),
+      body: JSON.stringify({chapternumber: chapter.number, number: chapter.pagenumber+1, link: page.url, user: this.props.currentUser}),
       headers: { 'Content-type' : 'application/json'}
     })
     .then(res => {

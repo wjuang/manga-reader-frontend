@@ -24,6 +24,7 @@ class App extends Component {
       readPage: false,
       homePage: true,
       submitting: false,
+      currentUser: ''
     }
   }
 
@@ -172,16 +173,16 @@ class App extends Component {
         <SignUpPage changeUser={this.changeUser}/>
         <LoginPage changeUser={this.changeUser}/>
         {
-          (this.state.showPage) ? <ShowSeries baseURL={baseURL} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} deleteChapter={this.deleteChapter} /> : ''
+          (this.state.showPage) ? <ShowSeries baseURL={baseURL} currentUser={this.state.currentUser} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} deleteChapter={this.deleteChapter} /> : ''
         }
         {
-          (this.state.readPage) ? <ShowPage pages={this.state.showPages} getPages={this.getPages} manga={this.state.showManga} chapters={this.state.showChapters} showToggle={this.showToggle}/> : ''
+          (this.state.readPage) ? <ShowPage currentUser={this.state.currentUser} pages={this.state.showPages} getPages={this.getPages} manga={this.state.showManga} chapters={this.state.showChapters} showToggle={this.showToggle}/> : ''
         }
         {
         (this.state.homePage) ? <HomeList manga={this.state.allManga} showToggle={this.showToggle}/> : ''
         }
         {
-        (this.state.submitting) ? <NewSeries baseURL={baseURL} addSeries={this.addSeries} /> : ''
+        (this.state.submitting) ? <NewSeries currentUser={this.state.currentUser} baseURL={baseURL} addSeries={this.addSeries} /> : ''
         }
       </div>
     )
