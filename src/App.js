@@ -1,4 +1,5 @@
 import './App.css';
+import 'semantic-ui-css/semantic.min.css'
 import React, {Component} from 'react'
 import HomeList from './HomeList'
 import NewSeries from './NewSeries'
@@ -7,7 +8,9 @@ import ShowPage from './ShowPage'
 import PageUploader from './PageUploader'
 import LoginPage from './Login'
 import SignUpPage from './Signup'
+import Logout from './Logout'
 import {useAuth} from './Firebase'
+import {Menu} from 'semantic-ui-react'
 
 let baseURL = 'http://localhost:8000'
 
@@ -24,7 +27,8 @@ class App extends Component {
       readPage: false,
       homePage: true,
       submitting: false,
-      currentUser: ''
+      currentUser: '',
+      loggingIn: false
     }
   }
 
@@ -58,7 +62,9 @@ class App extends Component {
       showPage: true,
       showManga: manga,
       readPage: false,
-      homePage: false
+      homePage: false,
+      submitting: false,
+      loggingIn: false
     })
   }
 
@@ -74,7 +80,7 @@ class App extends Component {
         allManga: copyAllManga,
         showPage: false,
         showManga: [],
-        homePage: true
+        homePage: true,
       })
     })
   }
@@ -109,7 +115,7 @@ class App extends Component {
       this.setState({
         showPages: data.data,
         readPage: true,
-        showPage: false
+        showPage: false,
       })
     })
   }
@@ -119,7 +125,8 @@ class App extends Component {
       homePage: true,
       showPage: false,
       readPage: false,
-      submitting: false
+      submitting: false,
+      loggingIn: false
     })
   }
 
@@ -156,22 +163,68 @@ class App extends Component {
 
   changeUser = (user) => {
     this.setState({
-      currentUser: user
+      currentUser: user,
+    })
+  }
+
+  loginToggle = () => {
+    this.setState({
+      loggingIn: true
+    })
+  }
+
+  logoutUser = () => {
+    this.setState({
+      currentUser: undefined,
+
     })
   }
 
   componentDidMount(){
     this.getManga()
+    this.setState({
+      currentUser: '1'
+    })
   }
 
   render(){
     return(
       <div>
-        <button onClick={() => this.goHome()}>Home</button>
-        <button onClick={() => this.submitToggle()}>Add New Series</button>
-        <p>here:{this.state.currentUser}</p>
+        <Menu inverted vertical>
+          <Menu.Item
+          name='Home'
+          onClick={() => this.goHome()}
+          />
+          <Menu.Item
+          name='Add New Series'
+          onClick={() => this.submitToggle()}
+          />
+          <Menu.Item
+          name='Log In or Register'
+          onClick={() => this.loginToggle()}
+          />
+          <Menu.Item
+          name='About'
+          />
+        </Menu>
+        {
+          (this.state.currentUser) ?
+          <>
+            <Logout logoutUser={this.logoutUser} />
+          </>
+          :
+          ''
+        }
+        { (this.state.loggingIn) ?
+        <>
         <SignUpPage changeUser={this.changeUser}/>
-        <LoginPage changeUser={this.changeUser}/>
+        <LoginPage changeUser={this.changeUser} loginToggle={this.loginToggle}/>
+        </>
+        :
+        ''
+
+        }
+
         {
           (this.state.showPage) ? <ShowSeries baseURL={baseURL} currentUser={this.state.currentUser} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} deleteChapter={this.deleteChapter} /> : ''
         }
