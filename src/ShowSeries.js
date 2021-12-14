@@ -39,7 +39,9 @@ class ShowSeries extends Component {
             )
           })
         }
-        <UploadChapter currentUser={this.props.currentUser} manga={this.props.manga} addChapter={this.props.addChapter} baseURL={this.props.baseURL} />
+        { (this.props.currentUser) ?
+        <UploadChapter currentUser={this.props.currentUser} manga={this.props.manga} addChapter={this.props.addChapter} baseURL={this.props.baseURL} /> : ''
+        }
       </div>
     )
   }
