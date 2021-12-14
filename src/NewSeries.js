@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import CoverImageWidget from './CoverImageWidget'
 
 class NewSeries extends Component {
   constructor(props){
@@ -10,6 +11,12 @@ class NewSeries extends Component {
       artist: '',
       cover: ''
     }
+  }
+
+  setCover = (link) => {
+    this.setState({
+      cover: link
+    })
   }
 
   handleChange = (event) => {
@@ -45,11 +52,12 @@ class NewSeries extends Component {
     return(
       <>
       <p>Add New Manga:</p>
+      <CoverImageWidget setCover={this.setCover}/>
+      <p>{this.state.cover}</p>
       <form onSubmit={this.handleSubmit}>
         <input type='text' id='title' name='title' placeholder='Title' onChange={(e) => this.handleChange(e)} value={this.state.title} />
         <input type='text' id='author' name='author' placeholder='Author' onChange={(e) => this.handleChange(e)} value={this.state.author} />
         <input type='text' id='artist' name='artist' placeholder='Artist' onChange={(e) => this.handleChange(e)} value={this.state.artist} />
-        <input type='text' id='cover' name='cover' placeholder='Link to Cover Image' onChange={(e) => this.handleChange(e)} value={this.state.cover} />
         <input type='submit' value='Submit' />
       </form>
       </>

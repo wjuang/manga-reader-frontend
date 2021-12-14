@@ -55,7 +55,7 @@ class App extends Component {
   showToggle = (manga) => {
     this.getChapters(manga.id)
     this.setState({
-      showPage: !this.state.showPage,
+      showPage: true,
       showManga: manga,
       readPage: false,
       homePage: false
