@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+.cover {
+  max-width: 300px
+}
+
+.title {
+  font-size: 300%
+}
+
+.subtitle {
+  font-size: 150%
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

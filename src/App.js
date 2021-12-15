@@ -166,7 +166,8 @@ class App extends Component {
       showPage: false,
       homePage: false,
       readPage: false,
-      submitting: true
+      submitting: true,
+      loggingIn: false
     })
   }
 
@@ -178,7 +179,11 @@ class App extends Component {
 
   loginToggle = () => {
     this.setState({
-      loggingIn: true
+      loggingIn: true,
+      submitting: false,
+      homePage: false,
+      readPage: false,
+      showPage: false
     })
   }
 
