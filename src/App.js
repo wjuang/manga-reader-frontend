@@ -8,7 +8,11 @@ import PageUploader from './PageUploader'
 import LoginPage from './Login'
 import SignUpPage from './Signup'
 import Logout from './Logout'
+import Sidebar from './Sidebar'
 import {useAuth} from './Firebase'
+
+import Grid from '@mui/material/Grid'
+import Paper from '@mui/material/Paper'
 
 let baseURL = 'http://localhost:8000'
 
@@ -195,22 +199,30 @@ class App extends Component {
   render(){
     return(
       <div>
-        <table>
-        <tbody>
-          <tr onClick={() => this.goHome()}>
-          <td>Home</td>
-          </tr>
-          <tr onClick={() => this.submitToggle()}>
-          <td>Add New Series</td>
-          </tr>
-          <tr onClick={() => this.loginToggle()}>
-          <td>Log In or Register</td>
-          </tr>
-          <tr>
-          <td>About</td>
-          </tr>
-          </tbody>
-        </table>
+      <Grid container>
+      <Grid item md={3} xs={6} sm={6}>
+      <Paper>
+      <Sidebar goHome={this.goHome} submitToggle={this.submitToggle} loginToggle={this.loginToggle}/>
+{       // <table>
+       //  <tbody>
+       //    <tr onClick={() => this.goHome()}>
+       //    <td>Home</td>
+       //    </tr>
+       //    <tr onClick={() => this.submitToggle()}>
+       //    <td>Add New Series</td>
+       //    </tr>
+       //    <tr onClick={() => this.loginToggle()}>
+       //    <td>Log In or Register</td>
+       //    </tr>
+       //    <tr>
+       //    <td>About</td>
+       //    </tr>
+       //    </tbody>
+       //  </table>
+     }
+     </Paper>
+     </Grid>
+     <Grid item md={9} xs={6} sm={6}>
         {
           (this.state.currentUser) ?
           <>
@@ -241,6 +253,9 @@ class App extends Component {
         {
         (this.state.submitting) ? <NewSeries currentUser={this.state.currentUser} baseURL={baseURL} addSeries={this.addSeries} /> : ''
         }
+
+        </Grid>
+        </Grid>
       </div>
     )
   }
