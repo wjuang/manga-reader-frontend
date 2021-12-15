@@ -148,10 +148,10 @@ class App extends Component {
   }
 
   deleteChapter = (chapter) => {
-    fetch(baseURL + '/reader/' + chapter.seriesid + '/' + chapter.number, {
+    console.log(chapter.seriesid)
+    fetch(baseURL + '/reader/' + chapter.seriesid.id + '/' + chapter.number, {
       method: 'DELETE'
     }).then( res=> {
-      // console.log(res)
       const findIndex = this.state.showChapters.findIndex(chap => chap.number === chapter.number)
       const copyChapters = [...this.state.showChapters]
       copyChapters.splice(findIndex, 1)
@@ -200,7 +200,7 @@ class App extends Component {
     return(
       <div>
       <Grid container>
-      <Grid item md={3} xs={6} sm={6}>
+      <Grid item md={3} xs={6} sm={4} lg={2}>
       <Paper>
       <Sidebar goHome={this.goHome} submitToggle={this.submitToggle} loginToggle={this.loginToggle}/>
 {       // <table>
@@ -222,7 +222,7 @@ class App extends Component {
      }
      </Paper>
      </Grid>
-     <Grid item md={9} xs={6} sm={6}>
+     <Grid item md={9} xs={6} sm={8} lg={10}>
         {
           (this.state.currentUser) ?
           <>

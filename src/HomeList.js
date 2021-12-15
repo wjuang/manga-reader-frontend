@@ -1,4 +1,11 @@
 import React, {Component} from 'react'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 class HomeList extends Component {
   constructor(props){
@@ -12,25 +19,45 @@ class HomeList extends Component {
 
   render(){
     return(
-      <div>
-      <table key={this.props.allManga}>
-        <tbody>
+      
+      <TableContainer component={Paper}>
+      <Table key={this.props.allManga}>
+        <TableHead>
+          <TableRow>
+            <TableCell>
+            Title
+            </TableCell>
+            <TableCell>
+            Chapters
+            </TableCell>
+            <TableCell>
+            Last Updated
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {
             this.props.manga.map(manga => {
               return(
                 <>
-                  <tr onClick={() => this.props.showToggle(manga)} key={manga.id}>
-                    <td key={manga.id}>
+                  <TableRow onClick={() => this.props.showToggle(manga)} key={manga.id}>
+                    <TableCell key={manga.id}>
                     {manga.title}
-                    </td>
-                  </tr>
+                    </TableCell>
+                    <TableCell>
+                    {manga.chaptercount}
+                    </TableCell>
+                    <TableCell>
+                    {manga.updated}
+                    </TableCell>
+                  </TableRow>
                 </>
               )
             })
           }
-        </tbody>
-      </table>
-      </div>
+        </TableBody>
+      </Table>
+      </TableContainer>
     )
   }
 }
