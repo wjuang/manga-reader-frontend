@@ -9,8 +9,6 @@ import LoginPage from './Login'
 import SignUpPage from './Signup'
 import Logout from './Logout'
 import {useAuth} from './Firebase'
-import 'semantic-ui-css/semantic.min.css'
-import {Grid, Menu, Segment} from 'semantic-ui-react'
 
 let baseURL = 'http://localhost:8000'
 
@@ -42,8 +40,15 @@ class App extends Component {
       }
     })
     .then (data => {
+      const sortData = [].concat(data.data)
+      sortData.sort(function compare(a, b) {
+        let dateA = new Date(a.updated)
+        let dateB = new Date(b.updated)
+        return dateB - dateA
+      })
+      console.log(sortData)
       this.setState({
-        allManga: data.data
+        allManga: sortData
       })
     })
   }
@@ -189,27 +194,23 @@ class App extends Component {
 
   render(){
     return(
-      <Grid>
-        <Grid.Column width={4}>
-        <Menu fluid vertical tabular>
-          <Menu.Item
-            name='home'
-            onClick={() => this.goHome()}
-          />
-          <Menu.Item
-            name='Add New Series'
-            onClick={() => this.submitToggle()}
-          />
-          <Menu.Item
-            name='Log In or Register'
-            onClick={() => this.loginToggle()}
-          />
-          <Menu.Item
-            name='About'
-          />
-          </Menu>
-        </Grid.Column>
-        <Grid.Column stretched width={12}>
+      <div>
+        <table>
+        <tbody>
+          <tr onClick={() => this.goHome()}>
+          <td>Home</td>
+          </tr>
+          <tr onClick={() => this.submitToggle()}>
+          <td>Add New Series</td>
+          </tr>
+          <tr onClick={() => this.loginToggle()}>
+          <td>Log In or Register</td>
+          </tr>
+          <tr>
+          <td>About</td>
+          </tr>
+          </tbody>
+        </table>
         {
           (this.state.currentUser) ?
           <>
@@ -240,8 +241,7 @@ class App extends Component {
         {
         (this.state.submitting) ? <NewSeries currentUser={this.state.currentUser} baseURL={baseURL} addSeries={this.addSeries} /> : ''
         }
-        </Grid.Column>
-      </Grid>
+      </div>
     )
   }
 }

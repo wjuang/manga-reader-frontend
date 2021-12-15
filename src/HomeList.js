@@ -5,9 +5,10 @@ class HomeList extends Component {
     super(props)
 
     this.state ={
-      manga: this.props.manga
+      manga: []
     }
   }
+
 
   render(){
     return(
