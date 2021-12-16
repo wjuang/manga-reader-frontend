@@ -10,13 +10,14 @@ import Divider from '@mui/material/Divider'
 export default function Sidebar(props){
 
   return(
-    <>
+    <div class='drawerwrap'>
       <Drawer
       variant='permanent'
       anchor='left'
+      className='drawerwrap'
       >
-        <div>
-          <Typography variant="h5">
+        <div >
+          <Typography variant="h5" class='drawertop'>
             Makima Reader
           </Typography>
 
@@ -33,7 +34,7 @@ export default function Sidebar(props){
           </List>
         </div>
       </Drawer>
-    </>
+    </div>
   )
 
 }

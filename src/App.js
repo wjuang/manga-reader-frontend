@@ -197,15 +197,15 @@ class App extends Component {
   componentDidMount(){
     this.getManga()
     this.setState({
-      currentUser: '1'
+      currentUser: '1n02vB'
     })
   }
 
   render(){
     return(
-      <div>
+      <div class='fullwrap'>
       <Grid container>
-      <Grid item md={3} xs={6} sm={4} lg={2}>
+      <Grid item md={2} xs={3} sm={3} lg={2}>
       <Paper>
       <Sidebar goHome={this.goHome} submitToggle={this.submitToggle} loginToggle={this.loginToggle}/>
 {       // <table>
@@ -227,15 +227,10 @@ class App extends Component {
      }
      </Paper>
      </Grid>
-     <Grid item md={9} xs={6} sm={8} lg={10}>
-        {
-          (this.state.currentUser) ?
-          <>
-            <Logout logoutUser={this.logoutUser} />
-          </>
-          :
-          ''
-        }
+     <Grid item md={10} xs={9} sm={9} lg={10}>
+     <div class='notSidebar'>
+        <Logout logoutUser={this.logoutUser} />
+
         { (this.state.loggingIn) ?
         <>
         <SignUpPage changeUser={this.changeUser}/>
@@ -258,7 +253,7 @@ class App extends Component {
         {
         (this.state.submitting) ? <NewSeries currentUser={this.state.currentUser} baseURL={baseURL} addSeries={this.addSeries} /> : ''
         }
-
+        </div>
         </Grid>
         </Grid>
       </div>

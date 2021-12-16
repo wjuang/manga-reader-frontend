@@ -4,6 +4,12 @@ import UploadChapter from './UploadChapter'
 import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
 import Divider from '@mui/material/Divider'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 
 class ShowSeries extends Component {
   constructor(props){
@@ -38,18 +44,20 @@ class ShowSeries extends Component {
           this.props.showChapters.map(chapter => {
             return(
               <>
-                <table>
-                  <tbody>
-                    <tr key={chapter.id}>
-                      <td onClick={() => this.props.getPages(this.props.manga.id, chapter.number)}>
+                <TableContainer component={Paper}>
+                  <Table>
+                    <TableBody>
+                    <TableRow key={chapter.id}>
+                      <TableCell onClick={() => this.props.getPages(this.props.manga.id, chapter.number)}>
                         {chapter.number}
-                      </td>
+                      </TableCell>
                       {
-                      (this.props.currentUser === chapter.submittedBy) ? <td onClick={() => this.props.deleteChapter(chapter)}><small>delete</small></td> : ''
+                      (this.props.currentUser === chapter.submittedBy) ? <TableCell onClick={() => this.props.deleteChapter(chapter)}><small>delete</small></TableCell> : ''
                       }
-                    </tr>
-                  </tbody>
-                </table>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
               </>
             )
           })

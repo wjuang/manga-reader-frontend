@@ -18,10 +18,13 @@ export default function Logout({logoutUser}) {
     }
     setLoading(false);
   }
+  if (currentUser?.email){
   return(
-    <>
+    <div class='logout'>
     <div>Currently logged in as: { currentUser?.email } </div>
     <button onClick={handleLogout}>Log Out</button>
-    </>
-  )
+    </div>
+  )}else {
+    return(null)
+  }
 }
