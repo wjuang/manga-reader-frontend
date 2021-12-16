@@ -6,6 +6,12 @@ import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import Divider from '@mui/material/Divider'
 import eyes from './assets/makima.bmp'
+import Login from '@mui/icons-material/Login'
+import AddBox from '@mui/icons-material/AddBox'
+import Home from '@mui/icons-material/Home'
+import Logout from './Logout'
+
+
 
 // import ListItemIcon from '@mui/material/ListItemIcon'
 
@@ -24,11 +30,11 @@ export default function Sidebar(props){
 
           <List>
             <Divider />
-            <ListItem onClick={() => props.goHome()}><ListItemText primary='Home'/></ListItem>
+            <ListItem onClick={() => props.goHome()}><Home /> <ListItemText primary='Home'/></ListItem>
             <Divider />
-            <ListItem onClick={() => props.submitToggle()}><ListItemText primary='Add New Series'/></ListItem>
+            <ListItem onClick={() => props.submitToggle()}><AddBox /> <ListItemText primary='New Series'/></ListItem>
             <Divider />
-            <ListItem onClick={() => props.loginToggle()}><ListItemText primary='Login/Register'/></ListItem>
+            <ListItem onClick={() => props.loginToggle()}><Login /> <ListItemText primary='Login/Register'/></ListItem>
             <Divider />
             <ListItem><ListItemText primary='About'/></ListItem>
             <Divider />

@@ -1,8 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 import { login, logout, useAuth} from "./Firebase.js"
 import Grid from '@mui/material/Grid'
+import Logout from '@mui/icons-material/Logout'
 
-export default function Logout({logoutUser}) {
+export default function Logoff({logoutUser}) {
   const [ loading, setLoading ] = useState(false);
   const currentUser = useAuth();
 
@@ -21,13 +22,13 @@ export default function Logout({logoutUser}) {
   }
   if (currentUser?.email){
   return(
-    <div class='logforms'>
+    <div>
     <Grid container>
     <Grid item>
-    <div>Currently logged in as: { currentUser?.email } </div>
+    <div class='logout'>Hello, { currentUser?.email } </div>
     </Grid>
     <Grid item>
-    <button onClick={handleLogout}>Log Out</button>
+    <Logout  onClick={handleLogout}/>
     </Grid>
     </Grid>
     </div>
