@@ -36,8 +36,13 @@ export default function LoginPage({changeUser, loginToggle}) {
     setLoading(false);
   }
 
+if (currentUser?.email){
   return (
-
+    <>
+    </>
+  )
+}else{
+  return(
     <>
     <div class='logforms'>
       <form>
@@ -57,4 +62,5 @@ export default function LoginPage({changeUser, loginToggle}) {
     </div>
     </>
   )
+}
 }

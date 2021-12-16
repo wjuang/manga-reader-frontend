@@ -23,7 +23,11 @@ export default function SignupPage({changeUser}) {
     // }
     setLoading(false);
   }
-
+  if (currentUser?.email){
+    return(
+      <h1 class='title'>You are signed in!</h1>
+    )
+  } else {
   return (
     <>
       <div class='logforms'>
@@ -45,5 +49,6 @@ export default function SignupPage({changeUser}) {
 
       </div>
     </>
-  );
+  )
+}
 }
