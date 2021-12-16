@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 import PageUploader from './PageUploader'
+import Grid from '@mui/material/Grid'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
 
 class UploadChapter extends Component {
   constructor(props){
@@ -78,16 +81,16 @@ class UploadChapter extends Component {
       {
         (this.state.editNewChapter) ?
         <>
-        <p>Upload Pages for Chapter {this.state.chapterToEdit.number}</p>
+        <h4>Upload Pages for Chapter {this.state.chapterToEdit.number}</h4>
         <PageUploader chapter={this.state.chapterToEdit} pagenumberIncrease={this.pagenumberIncrease} addPage={this.addPage}/>
         <p>Page Count: {this.state.chapterToEdit.pagenumber}</p>
         </>
         :
         <>
-        <p>Upload Chapter:</p>
+        <h4>Upload Chapter:</h4>
         <form onSubmit={this.handleSubmit}>
-          <input type='text' id='number' name='number' placeholder='Chapter Number' onChange={(e) => this.handleChange(e)} value={this.state.number} />
-          <input type='submit' value='Submit' />
+          <TextField type='number' label="Chapter Number" id='number' name='number' placeholder='Chapter Number' onChange={(e) => this.handleChange(e)} value={this.state.number} />
+          <TextField type='submit' value='Submit' />
         </form>
         </>
       }

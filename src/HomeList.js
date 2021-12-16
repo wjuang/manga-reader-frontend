@@ -19,18 +19,18 @@ class HomeList extends Component {
 
   render(){
     return(
-      
+      <div>
       <TableContainer component={Paper}>
       <Table key={this.props.allManga}>
-        <TableHead>
+        <TableHead style={{ backgroundColor:'#630000',}}>
           <TableRow>
-            <TableCell>
+            <TableCell style={{color: 'white'}}>
             Title
-            </TableCell>
-            <TableCell>
+            </TableCell >
+            <TableCell style={{color: 'white'}}>
             Chapters
             </TableCell>
-            <TableCell>
+            <TableCell style={{color: 'white'}}>
             Last Updated
             </TableCell>
           </TableRow>
@@ -58,6 +58,7 @@ class HomeList extends Component {
         </TableBody>
       </Table>
       </TableContainer>
+      </div>
     )
   }
 }

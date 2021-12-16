@@ -190,15 +190,11 @@ class App extends Component {
   logoutUser = () => {
     this.setState({
       currentUser: undefined,
-
     })
   }
 
   componentDidMount(){
     this.getManga()
-    this.setState({
-      currentUser: '1n02vB'
-    })
   }
 
   render(){
@@ -233,8 +229,14 @@ class App extends Component {
 
         { (this.state.loggingIn) ?
         <>
+        <Grid container>
+        <Grid item md={6} xs={6} sm={6} lg={6}>
         <SignUpPage changeUser={this.changeUser}/>
+        </Grid>
+        <Grid item md={6} xs={6} sm={6} lg={6}>
         <LoginPage changeUser={this.changeUser} loginToggle={this.loginToggle}/>
+        </Grid>
+        </Grid>
         </>
         :
         ''

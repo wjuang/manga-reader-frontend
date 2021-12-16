@@ -1,5 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { login, logout, useAuth} from "./Firebase.js"
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
 
 export default function LoginPage({changeUser, loginToggle}) {
   const [ loading, setLoading ] = useState(false);
@@ -42,11 +44,11 @@ export default function LoginPage({changeUser, loginToggle}) {
         <h1>Login</h1>
 
         <div>
-          <input id="username" ref={emailRef} placeholder="Email" />
+          <input label="Email" id="username" type="username" ref={emailRef} placeholder="Email" />
           <span><i></i></span>
         </div>
         <div>
-          <input id="password" ref={passwordRef} type="password" placeholder="Password" />
+          <input label="Password" id="password" ref={passwordRef} type="password" placeholder="Password" />
           <span><i></i></span>
         </div>
       </form>

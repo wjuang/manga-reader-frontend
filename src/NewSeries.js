@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import CoverImageWidget from './CoverImageWidget'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
 
 class NewSeries extends Component {
   constructor(props){
@@ -51,15 +53,24 @@ class NewSeries extends Component {
   render(){
     return(
       <>
-      <p>Add New Manga:</p>
+      {
+
+      (this.props.currentUser) ?
+      <>
+      <h1>Add a New Manga:</h1>
       <CoverImageWidget setCover={this.setCover}/>
       <p>{this.state.cover}</p>
       <form onSubmit={this.handleSubmit}>
-        <input type='text' id='title' name='title' placeholder='Title' onChange={(e) => this.handleChange(e)} value={this.state.title} />
-        <input type='text' id='author' name='author' placeholder='Author' onChange={(e) => this.handleChange(e)} value={this.state.author} />
-        <input type='text' id='artist' name='artist' placeholder='Artist' onChange={(e) => this.handleChange(e)} value={this.state.artist} />
-        <input type='submit' value='Submit' />
+        <TextField type='text' label='Title' id='title' name='title' placeholder='Title' onChange={(e) => this.handleChange(e)} value={this.state.title} />
+        <TextField type='text' label='Author' id='author' name='author' placeholder='Author' onChange={(e) => this.handleChange(e)} value={this.state.author} />
+        <TextField type='text' label='Artist' id='artist' name='artist' placeholder='Artist' onChange={(e) => this.handleChange(e)} value={this.state.artist} />
+        <TextField type='submit' value='Submit' />
       </form>
+      </> :
+      <>
+      <h1>Please Log In to upload a series!</h1>
+      </>
+      }
       </>
     )
   }

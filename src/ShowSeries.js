@@ -11,6 +11,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
+
 class ShowSeries extends Component {
   constructor(props){
     super(props)
@@ -35,35 +36,52 @@ class ShowSeries extends Component {
       <Grid item md={8} xs={10} sm={8} lg={6}>
         <img class='cover' src={this.props.manga.cover} />
       </Grid>
-      <Grid item>
+      </Grid>
       { (this.props.currentUser) ?
       <UploadChapter currentUser={this.props.currentUser} manga={this.props.manga} addChapter={this.props.addChapter} baseURL={this.props.baseURL} /> : ''
       }
-      <p>Chapter List</p>
+      <h4>Chapter List</h4>
+      <TableContainer>
+        <Table>
+        <TableHead style={{ backgroundColor:'#630000',}}>
+          <TableRow>
+            <TableCell style={{color: 'white'}}>
+            Number
+            </TableCell >
+            <TableCell style={{color: 'white'}}>
+            Uploader
+            </TableCell>
+            <TableCell style={{color: 'white'}}>
+            Upload Date
+            </TableCell>
+          </TableRow>
+        </TableHead>
         {
           this.props.showChapters.map(chapter => {
             return(
               <>
-                <TableContainer component={Paper}>
-                  <Table>
                     <TableBody>
                     <TableRow key={chapter.id}>
                       <TableCell onClick={() => this.props.getPages(this.props.manga.id, chapter.number)}>
                         {chapter.number}
+                      </TableCell>
+                      <TableCell>
+                        {chapter.submittedBy}
+                      </TableCell>
+                      <TableCell>
+                        {chapter.uploaded}
                       </TableCell>
                       {
                       (this.props.currentUser === chapter.submittedBy) ? <TableCell onClick={() => this.props.deleteChapter(chapter)}><small>delete</small></TableCell> : ''
                       }
                       </TableRow>
                     </TableBody>
-                  </Table>
-                </TableContainer>
               </>
             )
           })
         }
-        </Grid>
-        </Grid>
+        </Table>
+        </TableContainer>
       </div>
     )
   }

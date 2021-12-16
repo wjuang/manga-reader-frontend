@@ -1,5 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { signup, useAuth} from "./Firebase"
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
 
 export default function SignupPage({changeUser}) {
   const [ loading, setLoading ] = useState(false);
@@ -29,11 +31,11 @@ export default function SignupPage({changeUser}) {
         <h1>Register</h1>
 
         <div>
-          <input id="username" ref={emailRef} placeholder="Email" />
+          <input label="Email" id="username" ref={emailRef} placeholder="Email" />
           <span><i></i></span>
         </div>
         <div>
-        <input id="password" ref={passwordRef} type="password" placeholder="Password" />
+        <input label='Password' id="password" ref={passwordRef} type="password" placeholder="Password" />
         <span><i></i></span>
         </div>
 

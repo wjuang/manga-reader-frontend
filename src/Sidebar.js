@@ -5,6 +5,7 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import Divider from '@mui/material/Divider'
+
 // import ListItemIcon from '@mui/material/ListItemIcon'
 
 export default function Sidebar(props){
@@ -14,10 +15,11 @@ export default function Sidebar(props){
       <Drawer
       variant='permanent'
       anchor='left'
-      className='drawerwrap'
+      sx={{
+        backgroundColor: '#630000'
+      }}
       >
-        <div >
-          <Typography variant="h5" class='drawertop'>
+          <Typography variant="h2" class='drawertop'>
             Makima Reader
           </Typography>
 
@@ -32,7 +34,6 @@ export default function Sidebar(props){
             <ListItem><ListItemText primary='About'/></ListItem>
             <Divider />
           </List>
-        </div>
       </Drawer>
     </div>
   )
