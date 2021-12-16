@@ -11,6 +11,7 @@ import AddBox from '@mui/icons-material/AddBox'
 import Home from '@mui/icons-material/Home'
 import Search from '@mui/icons-material/Search'
 import Logout from './Logout'
+import Box from '@mui/material/Box'
 
 
 
@@ -27,10 +28,11 @@ export default function Sidebar(props){
         backgroundColor: '#630000'
       }}
       >
+      <Box display='flex' justifyContent='center' alignItems='center'>
           <img src={eyes} className='eyes'/>
+      </Box>
 
           <List>
-            <Divider />
             <ListItem onClick={() => props.goHome()}><Home /> <ListItemText primary='Home'/></ListItem>
             <Divider />
             <ListItem onClick={() => props.submitToggle()}><AddBox /> <ListItemText primary='New Series'/></ListItem>

@@ -22,7 +22,6 @@ export default class Search extends Component {
   }
 
   handleSubmit = (query) => {
-    console.log(query)
     this.setState({
       filteredManga: []
     })
