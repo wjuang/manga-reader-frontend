@@ -26,7 +26,7 @@ export default function SignupPage({changeUser}) {
 
   return (
     <>
-      <div>
+      <div class='logforms'>
       <form>
         <h1>Register</h1>
 

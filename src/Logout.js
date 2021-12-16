@@ -21,7 +21,7 @@ export default function Logout({logoutUser}) {
   }
   if (currentUser?.email){
   return(
-    <div class='logout'>
+    <div class='logforms'>
     <Grid container>
     <Grid item>
     <div>Currently logged in as: { currentUser?.email } </div>

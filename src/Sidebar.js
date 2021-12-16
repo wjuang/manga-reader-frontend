@@ -5,6 +5,7 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import Divider from '@mui/material/Divider'
+import eyes from './assets/makima.bmp'
 
 // import ListItemIcon from '@mui/material/ListItemIcon'
 
@@ -19,9 +20,7 @@ export default function Sidebar(props){
         backgroundColor: '#630000'
       }}
       >
-          <Typography variant="h2" class='drawertop'>
-            Makima Reader
-          </Typography>
+          <img src={eyes} className='eyes'/>
 
           <List>
             <Divider />

@@ -39,7 +39,7 @@ export default function LoginPage({changeUser, loginToggle}) {
   return (
 
     <>
-    <div>
+    <div class='logforms'>
       <form>
         <h1>Login</h1>
 

@@ -20,6 +20,9 @@ class HomeList extends Component {
   render(){
     return(
       <div>
+      <div class="splashTitle">
+      <h1>Makima Reader</h1>
+      </div>
       <TableContainer component={Paper}>
       <Table key={this.props.allManga}>
         <TableHead style={{ backgroundColor:'#630000',}}>
