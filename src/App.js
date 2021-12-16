@@ -9,6 +9,7 @@ import LoginPage from './Login'
 import SignUpPage from './Signup'
 import Logout from './Logout'
 import Sidebar from './Sidebar'
+import Search from './Search'
 import {useAuth} from './Firebase'
 
 import Grid from '@mui/material/Grid'
@@ -30,7 +31,8 @@ class App extends Component {
       homePage: true,
       submitting: false,
       currentUser: '',
-      loggingIn: false
+      loggingIn: false,
+      searching: false
     }
   }
 
@@ -73,7 +75,8 @@ class App extends Component {
       readPage: false,
       homePage: false,
       submitting: false,
-      loggingIn: false
+      loggingIn: false,
+      searching: false
     })
   }
 
@@ -135,7 +138,8 @@ class App extends Component {
       showPage: false,
       readPage: false,
       submitting: false,
-      loggingIn: false
+      loggingIn: false,
+      searching: false
     })
   }
 
@@ -167,7 +171,8 @@ class App extends Component {
       homePage: false,
       readPage: false,
       submitting: true,
-      loggingIn: false
+      loggingIn: false,
+      searching: false
     })
   }
 
@@ -183,7 +188,19 @@ class App extends Component {
       submitting: false,
       homePage: false,
       readPage: false,
-      showPage: false
+      showPage: false,
+      searching: false
+    })
+  }
+
+  searchToggle = () => {
+    this.setState({
+      homePage: false,
+      showPage: false,
+      readPage: false,
+      submitting: false,
+      loggingIn: false,
+      searching: true,
     })
   }
 
@@ -203,7 +220,7 @@ class App extends Component {
       <Grid container>
       <Grid item md={2} xs={3} sm={3} lg={2}>
       <Paper>
-      <Sidebar goHome={this.goHome} submitToggle={this.submitToggle} loginToggle={this.loginToggle}/>
+      <Sidebar searchToggle={this.searchToggle} goHome={this.goHome} submitToggle={this.submitToggle} loginToggle={this.loginToggle}/>
 {       // <table>
        //  <tbody>
        //    <tr onClick={() => this.goHome()}>
@@ -226,7 +243,11 @@ class App extends Component {
      <Grid item md={10} xs={9} sm={9} lg={10}>
      <div class='notSidebar'>
         <Logout changeUser={this.changeUser} logoutUser={this.logoutUser} />
-
+        {
+          (this.state.searching) ?
+        <Search allManga={this.state.allManga} showToggle={this.showToggle}/>
+        : ''
+        }
         { (this.state.loggingIn) ?
         <>
         <Grid container>

@@ -9,6 +9,7 @@ import eyes from './assets/makima.bmp'
 import Login from '@mui/icons-material/Login'
 import AddBox from '@mui/icons-material/AddBox'
 import Home from '@mui/icons-material/Home'
+import Search from '@mui/icons-material/Search'
 import Logout from './Logout'
 
 
@@ -36,7 +37,7 @@ export default function Sidebar(props){
             <Divider />
             <ListItem onClick={() => props.loginToggle()}><Login /> <ListItemText primary='Login/Register'/></ListItem>
             <Divider />
-            <ListItem><ListItemText primary='About'/></ListItem>
+            <ListItem onClick={() => props.searchToggle()}><Search /><ListItemText primary='Search'/></ListItem>
             <Divider />
           </List>
       </Drawer>

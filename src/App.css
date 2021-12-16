@@ -33,6 +33,10 @@
   -webkit-text-stroke: 2px white;
 }
 
+.searchForm {
+  margin: 0 auto;
+}
+
 body {
   background-color: #630000 ;
   height: 100%;
