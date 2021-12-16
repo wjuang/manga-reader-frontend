@@ -41,7 +41,7 @@ export default function LoginPage({changeUser, loginToggle}) {
     <>
     <div class='logforms'>
       <form>
-        <h1>Login</h1>
+        <h1 class='title'>Login</h1>
 
         <div>
           <input label="Email" id="username" type="username" ref={emailRef} placeholder="Email" />

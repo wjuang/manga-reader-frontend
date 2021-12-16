@@ -3,12 +3,16 @@ import { login, logout, useAuth} from "./Firebase.js"
 import Grid from '@mui/material/Grid'
 import Logout from '@mui/icons-material/Logout'
 
-export default function Logoff({logoutUser}) {
+export default function Logoff({changeUser, logoutUser}) {
   const [ loading, setLoading ] = useState(false);
   const currentUser = useAuth();
 
   const emailRef = useRef();
   const passwordRef = useRef();
+
+  useEffect(() =>
+    changeUser(currentUser?.email), [currentUser]
+  )
 
   async function handleLogout() {
     logoutUser()

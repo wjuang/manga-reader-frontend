@@ -225,7 +225,7 @@ class App extends Component {
      </Grid>
      <Grid item md={10} xs={9} sm={9} lg={10}>
      <div class='notSidebar'>
-        <Logout logoutUser={this.logoutUser} />
+        <Logout changeUser={this.changeUser} logoutUser={this.logoutUser} />
 
         { (this.state.loggingIn) ?
         <>

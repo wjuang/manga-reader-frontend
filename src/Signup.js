@@ -28,7 +28,7 @@ export default function SignupPage({changeUser}) {
     <>
       <div class='logforms'>
       <form>
-        <h1>Register</h1>
+        <h1 class='title'>Register</h1>
 
         <div>
           <input label="Email" id="username" ref={emailRef} placeholder="Email" />
