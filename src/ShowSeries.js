@@ -10,6 +10,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Box from '@mui/material/Box'
 
 
 class ShowSeries extends Component {
@@ -34,7 +35,9 @@ class ShowSeries extends Component {
         }
       </Grid>
       <Grid item md={8} xs={10} sm={8} lg={6}>
-        <img class='cover' src={this.props.manga.cover} />
+        <Box display='flex' justifyContent='flex-end' alignItems='flex-end'>
+          <img class='cover' src={this.props.manga.cover} />
+        </Box>
       </Grid>
       </Grid>
       { (this.props.currentUser) ?

@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField'
 import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
 
 
 export default class Search extends Component {
@@ -48,12 +49,14 @@ export default class Search extends Component {
     return(
       <>
       <div class='searchForm'>
-        <form>
-          <label htmlFor='search'>
-            <h1>Search all series:</h1>
-          </label>
-          <TextField label='Title' type='text' id='query' placeholder='Enter title' onChange={(e) => this.handleChange(e)} />
-        </form>
+        <Box display='flex' justifyContent='center' alignItems='center'>
+          <form>
+            <label htmlFor='search'>
+              <h1>Search all series:</h1>
+            </label>
+            <TextField label='Title' type='text' id='query' placeholder='Enter title' onChange={(e) => this.handleChange(e)} />
+          </form>
+        </Box>
       </div>
         {
           (this.state.query && this.state.filteredManga) ?

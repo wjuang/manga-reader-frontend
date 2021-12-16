@@ -32,7 +32,7 @@ class App extends Component {
       submitting: false,
       currentUser: '',
       loggingIn: false,
-      searching: false
+      searching: false,
     }
   }
 
@@ -128,6 +128,7 @@ class App extends Component {
         showPages: data.data,
         readPage: true,
         showPage: false,
+        chapterNumber: chapterNumber
       })
     })
   }
@@ -268,7 +269,7 @@ class App extends Component {
           (this.state.showPage) ? <ShowSeries baseURL={baseURL} currentUser={this.state.currentUser} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} deleteChapter={this.deleteChapter} /> : ''
         }
         {
-          (this.state.readPage) ? <ShowPage currentUser={this.state.currentUser} pages={this.state.showPages} getPages={this.getPages} manga={this.state.showManga} chapters={this.state.showChapters} showToggle={this.showToggle}/> : ''
+          (this.state.readPage) ? <ShowPage currentUser={this.state.currentUser} chapterNumber={this.state.chapterNumber} pages={this.state.showPages} getPages={this.getPages} manga={this.state.showManga} chapters={this.state.showChapters} showToggle={this.showToggle}/> : ''
         }
         {
         (this.state.homePage) ? <HomeList manga={this.state.allManga} showToggle={this.showToggle}/> : ''
