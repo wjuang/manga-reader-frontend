@@ -25,10 +25,10 @@ class ShowSeries extends Component {
     return(
       <div>
       <Grid container>
-      <Grid item md={4} xs={2} sm={4} lg={6}>
+      <Grid item md={4} xs={2} sm={4} lg={6} className='showInfo'>
         <h1 class="title">{this.props.manga.title}</h1>
-        <h5 class="subtitle">{this.props.manga.author}</h5>
-        <h5 class="subtitle">{this.props.manga.artist}</h5>
+        <h5 class="subtitle"><small>Author:</small> {this.props.manga.author}</h5>
+        <h5 class="subtitle"><small>Artist:</small> {this.props.manga.artist}</h5>
         {
         (this.props.currentUser === this.props.manga.submittedBy) ? <button onClick={() => this.props.deleteSeries(this.props.manga.id)}>Delete</button> : ''
         }

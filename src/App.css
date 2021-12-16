@@ -5,6 +5,23 @@
   width: 10em;
 }
 
+.showInfo {
+  padding-left: 1em;
+}
+
+.reader {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+.readerButtons{
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .splashTitle {
   margin-bottom: 1em;
   padding-top: 2em;
@@ -56,7 +73,8 @@ body {
 }
 
 .readerPage {
-  max-width: 100%
+  max-width: 80%;
+  padding-bottom: 1em;
 }
 
 .title {
