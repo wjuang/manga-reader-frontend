@@ -44,7 +44,7 @@ class HomeList extends Component {
         </TableHead>
         <TableBody>
           {
-            this.props.manga.map(manga => {
+            this.props.manga.slice(0, 20).map(manga => {
               return(
                 <>
                   <TableRow onClick={() => this.props.showToggle(manga)} key={manga.id}>
