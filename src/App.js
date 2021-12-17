@@ -15,7 +15,7 @@ import {useAuth} from './Firebase'
 import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
 
-let baseURL = 'http://localhost:8000'
+let baseURL = process.env.REACT_APP_baseURL
 
 class App extends Component {
   constructor(props){

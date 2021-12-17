@@ -4,8 +4,8 @@ class CoverImageWidget extends Component {
   componentDidMount() {
     var myWidget = window.cloudinary.createUploadWidget(
       {
-        cloudName: "dnxwdaxl6",
-        uploadPreset: "mangaPreset",
+        cloudName: process.env.REACT_APP_cloudName,
+        uploadPreset: process.env.REACT_APP_uploadPreset,
         // apiKey: 379466524187146
       },
       (error, result) => {

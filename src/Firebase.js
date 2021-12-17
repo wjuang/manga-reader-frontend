@@ -11,7 +11,7 @@ import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sig
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDfQCVBOp4IlMsUVMomXhEg4fbmS37lB_Q",
+  apiKey: process.env.REACT_APP_firebaseKey,
   authDomain: "makima-reader.firebaseapp.com",
   projectId: "makima-reader",
   storageBucket: "makima-reader.appspot.com",
