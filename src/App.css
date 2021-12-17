@@ -27,6 +27,8 @@
   padding-top: 2em;
   text-align: center;
   background-image:url('./assets/hands.bmp');
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 8em;
   color: #630000;
   font-size: 300%;
