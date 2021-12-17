@@ -10,6 +10,7 @@ import SignUpPage from './Signup'
 import Logout from './Logout'
 import Sidebar from './Sidebar'
 import Search from './Search'
+import EditSeries from './EditSeries'
 import {useAuth} from './Firebase'
 
 import Grid from '@mui/material/Grid'
@@ -34,6 +35,8 @@ class App extends Component {
       currentUser: '',
       loggingIn: false,
       searching: false,
+      editId: '',
+      editing: false,
     }
   }
 
@@ -68,6 +71,14 @@ class App extends Component {
     })
   }
 
+  editSeries = (series, id) => {
+    const copyAllManga = [...this.state.allManga]
+    copyAllManga.splice(id-1, 1, series.data)
+    this.setState({
+      allManga: copyAllManga
+    })
+  }
+
   showToggle = (manga) => {
     this.getChapters(manga.id)
     this.setState({
@@ -77,7 +88,8 @@ class App extends Component {
       homePage: false,
       submitting: false,
       loggingIn: false,
-      searching: false
+      searching: false,
+      editing: false
     })
   }
 
@@ -148,7 +160,12 @@ class App extends Component {
       readPage: false,
       submitting: false,
       loggingIn: false,
-      searching: false
+      searching: false,
+      editing: false,
+      editTitle: '',
+      editAuthor: '',
+      editArtist: '',
+      editDescription: ''
     })
   }
 
@@ -181,7 +198,8 @@ class App extends Component {
       readPage: false,
       submitting: true,
       loggingIn: false,
-      searching: false
+      searching: false,
+      editing: false,
     })
   }
 
@@ -198,7 +216,8 @@ class App extends Component {
       homePage: false,
       readPage: false,
       showPage: false,
-      searching: false
+      searching: false,
+      editing: false
     })
   }
 
@@ -210,12 +229,31 @@ class App extends Component {
       submitting: false,
       loggingIn: false,
       searching: true,
+      editing: false,
     })
   }
 
   logoutUser = () => {
     this.setState({
       currentUser: undefined,
+    })
+  }
+
+  toggleEdit = (title, author, artist, description, link, id) => {
+    this.setState({
+      editTitle: title,
+      editAuthor: author,
+      editArtist: artist,
+      editDescription: description,
+      editLink: link,
+      editId: id,
+      homePage: false,
+      showPage: false,
+      readPage: false,
+      submitting: false,
+      loggingIn: false,
+      searching: false,
+      editing: true,
     })
   }
 
@@ -274,7 +312,7 @@ class App extends Component {
         }
 
         {
-          (this.state.showPage) ? <ShowSeries baseURL={baseURL} showChapterNumber={this.state.showChapterNumber} currentUser={this.state.currentUser} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} deleteChapter={this.deleteChapter} /> : ''
+          (this.state.showPage) ? <ShowSeries toggleEdit={this.toggleEdit} baseURL={baseURL} showChapterNumber={this.state.showChapterNumber} currentUser={this.state.currentUser} manga={this.state.showManga} deleteSeries={this.deleteSeries} showChapters={this.state.showChapters} getPages={this.getPages} showPages={this.state.showPages} toggleReader={this.toggleReader} addChapter={this.addChapter} deleteChapter={this.deleteChapter} /> : ''
         }
         {
           (this.state.readPage) ? <ShowPage showChapterNumber={this.state.showChapterNumber} currentUser={this.state.currentUser} chapterNumber={this.state.chapterNumber} pages={this.state.showPages} getPages={this.getPages} manga={this.state.showManga} chapters={this.state.showChapters} showToggle={this.showToggle}/> : ''
@@ -284,6 +322,9 @@ class App extends Component {
         }
         {
         (this.state.submitting) ? <NewSeries currentUser={this.state.currentUser} baseURL={baseURL} addSeries={this.addSeries} /> : ''
+        }
+        {
+          (this.state.editing) ? <EditSeries editSeries={this.editSeries} editTitle={this.state.editTitle} editAuthor={this.state.editAuthor} editArtist={this.state.editArtist} editDescription={this.state.editDescription} editLink={this.state.editLink} editId={this.state.editId} currentUser={this.state.currentUser} baseURL={baseURL}/> : ''
         }
         </div>
         </Grid>

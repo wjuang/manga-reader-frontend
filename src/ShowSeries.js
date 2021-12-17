@@ -33,7 +33,13 @@ class ShowSeries extends Component {
         <h5 class="subtitle"><small>Artist:</small> {this.props.manga.artist}</h5>
         <p class='description'>{this.props.manga.description}</p>
         {
-        (this.props.currentUser === this.props.manga.submittedBy) ? <button onClick={() => this.props.deleteSeries(this.props.manga.id)}>Delete</button> : ''
+        (this.props.currentUser === this.props.manga.submittedBy) ?
+         <>
+         <button onClick={() => this.props.toggleEdit(this.props.manga.title, this.props.manga.author, this.props.manga.artist, this.props.manga.description, this.props.manga.link, this.props.manga.id)}>Edit </button>
+         <button onClick={() => this.props.deleteSeries(this.props.manga.id)}>Delete</button>
+         </>
+         :
+         ''
         }
       </Grid>
       <Grid item md={8} xs={10} sm={8} lg={6}>
