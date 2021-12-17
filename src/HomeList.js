@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box'
 
 class HomeList extends Component {
   constructor(props){
@@ -23,6 +24,9 @@ class HomeList extends Component {
       <div class="splashTitle">
       <h1>Makima Reader</h1>
       </div>
+      <Box display='flex' justifyContent='center' alignItems='center'>
+      <h1>Recently Updated</h1>
+      </Box>
       <TableContainer component={Paper}>
       <Table key={this.props.allManga}>
         <TableHead style={{ backgroundColor:'#630000',}}>

@@ -115,6 +115,7 @@ class App extends Component {
 
 
   getPages = (seriesId, chapterNumber) => {
+    window.scrollTo(0, 0)
     fetch(baseURL + '/reader/' + seriesId + '/' + chapterNumber + '/pages')
     .then (res => {
       if (res.status === 200){
