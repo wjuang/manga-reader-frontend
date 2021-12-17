@@ -18,7 +18,8 @@ class ShowSeries extends Component {
     super(props)
 
     this.state = {
-      manga: this.props.manga
+      manga: this.props.manga,
+      chapterNumber: 0
     }
   }
 

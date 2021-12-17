@@ -23,12 +23,12 @@ class ShowPage extends Component {
         <Grid container>
         <Grid item xs={12}>
         <Box display='flex' justifyContent='center' alignItems='center'>
-        <h1 class='chapterNumber'>{this.props.chapterNumber}</h1>
+        <h1 class='chapterNumber'>{this.props.showChapterNumber}</h1>
         </Box>
         </Grid>
         <Grid item xs={4}>
         <Box display='flex' justifyContent='center' alignItems='center'>
-        <Button variant='contained' startIcon={<ArrowBackIos/>} onClick={() => this.props.getPages(this.props.manga.id, this.props.pages[0].chapternumber-1)}>Previous</Button>
+        <Button variant='contained' startIcon={<ArrowBackIos/>} onClick={() => this.props.getPages(this.props.manga.id, this.props.showChapterNumber-1)}>Previous</Button>
         </Box>
         </Grid>
         <Grid item xs={4}>
@@ -38,7 +38,7 @@ class ShowPage extends Component {
         </Grid>
         <Grid item xs={4}>
         <Box display='flex' justifyContent='center' alignItems='center'>
-        <Button variant='contained' endIcon={<ArrowForwardIos />} onClick={() => this.props.getPages(this.props.manga.id, this.props.pages[0].chapternumber+1)}>Next</Button>
+        <Button variant='contained' endIcon={<ArrowForwardIos />} onClick={() => this.props.getPages(this.props.manga.id, this.props.showChapterNumber+1)}>Next</Button>
         </Box>
         </Grid>
         </Grid>
