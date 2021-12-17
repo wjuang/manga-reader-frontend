@@ -31,6 +31,7 @@ class ShowSeries extends Component {
         <h1 class="title">{this.props.manga.title}</h1>
         <h5 class="subtitle"><small>Author:</small> {this.props.manga.author}</h5>
         <h5 class="subtitle"><small>Artist:</small> {this.props.manga.artist}</h5>
+        <p class='description'>{this.props.manga.description}</p>
         {
         (this.props.currentUser === this.props.manga.submittedBy) ? <button onClick={() => this.props.deleteSeries(this.props.manga.id)}>Delete</button> : ''
         }

@@ -11,6 +11,7 @@ class NewSeries extends Component {
     this.state = {
       title: '',
       author: '',
+      description: '',
       artist: '',
       cover: ''
     }
@@ -33,7 +34,7 @@ class NewSeries extends Component {
     console.log(this.props.currentUser)
     fetch(this.props.baseURL + '/reader/', {
       method: 'POST',
-      body: JSON.stringify({title: this.state.title, author: this.state.author, artist: this.state.artist, cover: this.state.cover, submittedBy: this.props.currentUser}),
+      body: JSON.stringify({title: this.state.title, author: this.state.author, artist: this.state.artist, description: this.state.description, cover: this.state.cover, submittedBy: this.props.currentUser}),
       headers: { 'Content-type' : 'application/json'}
     })
     .then(res => {
@@ -67,14 +68,22 @@ class NewSeries extends Component {
       <Box display='flex' justifyContent='center' alignItems='center'>
       <p>{this.state.cover}</p>
       </Box>
-      <Box display='flex' justifyContent='center' alignItems='center'>
       <form onSubmit={this.handleSubmit}>
+      <Box display='flex' justifyContent='center' alignItems='center'>
+
         <TextField type='text' label='Title' id='title' name='title' placeholder='Title' onChange={(e) => this.handleChange(e)} value={this.state.title} />
         <TextField type='text' label='Author' id='author' name='author' placeholder='Author' onChange={(e) => this.handleChange(e)} value={this.state.author} />
         <TextField type='text' label='Artist' id='artist' name='artist' placeholder='Artist' onChange={(e) => this.handleChange(e)} value={this.state.artist} />
+        </Box>
+        <br/>
+        <Box display='flex' justifyContent='center' alignItems='center'>
+        <TextField multiline rows={4} type='text' label='Description' id='description' name='description' placeholder='Description' onChange={(e) => this.handleChange(e)} value={this.state.description} />
+        </Box>
+        <br/>
+        <Box display='flex' justifyContent='center' alignItems='center'>
         <TextField type='submit' value='Submit' />
+        </Box>
       </form>
-      </Box>
       </> :
       <>
       <Box display='flex' justifyContent='center' alignItems='center'>

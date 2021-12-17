@@ -6,6 +6,10 @@
   border: 1px solid white;
 }
 
+.description {
+  overflow-wrap: normal;
+}
+
 .showInfo {
   padding-left: 1em;
 }
