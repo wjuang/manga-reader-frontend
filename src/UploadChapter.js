@@ -82,7 +82,7 @@ class UploadChapter extends Component {
         (this.state.editNewChapter) ?
         <>
         <h4>Upload Pages for Chapter {this.state.chapterToEdit.number}</h4>
-        <PageUploader chapter={this.state.chapterToEdit} pagenumberIncrease={this.pagenumberIncrease} addPage={this.addPage}/>
+        <PageUploader togglePageUpload={this.togglePageUpload} chapter={this.state.chapterToEdit} pagenumberIncrease={this.pagenumberIncrease} addPage={this.addPage}/>
         <p>Page Count: {this.state.chapterToEdit.pagenumber}</p>
         </>
         :

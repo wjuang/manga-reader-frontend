@@ -107,8 +107,14 @@ class App extends Component {
       }
     })
     .then (data => {
+      const sortData = [].concat(data.data)
+      sortData.sort(function compare(a, b) {
+        let numA = a.number
+        let numB = b.number
+        return numA - numB
+      })
       this.setState({
-        showChapters: data.data
+        showChapters: sortData
       })
     })
   }
