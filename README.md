@@ -1,55 +1,13 @@
 Makima Reader
 
+TECHNOLOGIES USED: React for frontend, Flask for backend, and has Cloudinary and Firebase integration for image upload and user login respectively.
+
+DEPLOYED LINK: https://makima-reader.herokuapp.com
+
 Project Description
 
 This app aims to be a relatively lightweight manga/comic reading app. Users will be able to upload images to the site to be collected as chapters, which are all collected under individual titles. Users will then be able to scroll/click through the pages of each chapter to read the manga/comic. Although many similar sites exist currently, I will aim to make mine functional but visually simplistic and easy to load.
 
-Uses React for frontend, Flask for backend, and has Cloudinary and Firebase integration for image upload and user login respectively.
-
-
-Models including field names and their datatypes
-
-
-Users:
-
--username (string)
--email (string)
--password (string)
-
-
-Series:
-
--Title (string)
--Author (string)
--Artist
--Updated (date)
--Chapters (int)
--CoverImage (see Chapters: Pages)
-
-
-Chapters:
-
--Series (string)
--Uploaded (date)
--Uploader (string)
--Pages (int (ids for images? hyperlinks? local file locations? not sure yet))
-
-
-A list of routes (e.g. POST /pins/ allows users to post a picture of a pin)
-
--GET/series/chapter/page# (deepest route)
-
--POST/ (make new series)
-
--POST/series (add chapter to series)
-
--PUT/series/chapter (edit chapter of a series)
-
--PUT/series (edit series info)
-
--DELETE/series/chapter
-
--DELETE/series/
 
 
 Wireframes
