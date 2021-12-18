@@ -4,6 +4,8 @@ Project Description
 
 This app aims to be a relatively lightweight manga/comic reading app. Users will be able to upload images to the site to be collected as chapters, which are all collected under individual titles. Users will then be able to scroll/click through the pages of each chapter to read the manga/comic. Although many similar sites exist currently, I will aim to make mine functional but visually simplistic and easy to load.
 
+Uses React for frontend, Flask for backend, and has Cloudinary and Firebase integration for image upload and user login respectively.
+
 
 Models including field names and their datatypes
 
