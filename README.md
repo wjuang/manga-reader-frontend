@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+Makima Reader
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project Description
 
-## Available Scripts
+This app aims to be a relatively lightweight manga/comic reading app. Users will be able to upload images to the site to be collected as chapters, which are all collected under individual titles. Users will then be able to scroll/click through the pages of each chapter to read the manga/comic. Although many similar sites exist currently, I will aim to make mine functional but visually simplistic and easy to load.
 
-In the project directory, you can run:
 
-### `npm start`
+Models including field names and their datatypes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Users:
 
-### `npm test`
+-username (string)
+-email (string)
+-password (string)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Series:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-Title (string)
+-Author (string)
+-Artist
+-Updated (date)
+-Chapters (int)
+-CoverImage (see Chapters: Pages)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Chapters:
 
-### `npm run eject`
+-Series (string)
+-Uploaded (date)
+-Uploader (string)
+-Pages (int (ids for images? hyperlinks? local file locations? not sure yet))
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A list of routes (e.g. POST /pins/ allows users to post a picture of a pin)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+-GET/series/chapter/page# (deepest route)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-POST/ (make new series)
 
-## Learn More
+-POST/series (add chapter to series)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-PUT/series/chapter (edit chapter of a series)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-PUT/series (edit series info)
 
-### Code Splitting
+-DELETE/series/chapter
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+-DELETE/series/
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Wireframes
 
-### Making a Progressive Web App
+![image](https://user-images.githubusercontent.com/79492367/146646281-e3e1caf3-acb4-4a79-999f-df80bf1fdd7a.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+User Stories
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+User stories detailing app functionality
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+As a user, I want to be able to read manga/comics with an easy to use layout.
 
-### `npm run build` fails to minify
+I want to be able to upload, edit, and delete chapters from individual titles.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I want to be able to upload, edit, and delete titles as well.
+
+
+MVP Goals
+
+Reader and its functions work
+
+Users can upload series, and can only update and delete content that they uploaded.
+
+Users can upload images without problems, and images are either hosted externally or internally
+
+Basic title based search works
+
+
+Stretch Goals
+
+Mobile device functionality and compatibility
+
+App is optimized to reduce loading times
+
+Non-logged in users can access GET routes and only GET routes
